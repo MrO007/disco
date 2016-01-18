@@ -1,0 +1,5 @@
+#!/bin/bash
+while read p; do
+  sshtest=$(ssh -vN -o PreferredAuthentications=publickey -oStrictHostKeyChecking=no sshversiontest@$p 2>&1 | grep "remote software version")
+  echo $p $sshtest
+done <$1
